@@ -7,11 +7,7 @@ function getMatrix(height, width) {
         arr[row] = [];
 
         for (var column = 0; column < width; column++){
-            arr[row][column] = {
-                toString: function () {
-                    return "";
-                }
-            }
+            arr[row][column] = getObjForEmptyCell();
         }
     }
     return arr;
@@ -32,11 +28,17 @@ function createFieldOnHTML(matrix) {
             cell.className = "cell";
             cell.dataset.y = row;
             cell.dataset.x = column;
-            matrix[row][column].ball = "empty";
         }
     }
-
     return table;
+}
+
+function getObjForEmptyCell() {
+    return {
+        toString: function () {
+            return "";
+        }
+    };
 }
 
 var matrix = getMatrix(9, 9);
