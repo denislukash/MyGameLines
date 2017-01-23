@@ -1,6 +1,7 @@
 "use strict";
 
 function pickTheBall (event) {
+    //change permanent ball to picked animation
     var target = event.target;
     var x = target.parentElement.getAttribute("data-x");
     var y = target.parentElement.getAttribute("data-y");
@@ -13,7 +14,8 @@ function pickAnotherBall(event) {
     var target = event.target;
 
     if ( target.hasAttribute("src") ){
-
+        //if target - ball, find another picked ball and change it to permanent and
+        //call fn for target ball
         forEachCellandColor(function (row, column) {
 
             if( matrix[row][column].status === "picked" ){

@@ -7,7 +7,7 @@ function getMatrix(height, width) {
         arr[row] = [];
 
         for (var column = 0; column < width; column++){
-            arr[row][column] = getObjForEmptyCell();
+            arr[row][column] = getObjForEmptyCell(); //each cell - it's empty object
         }
     }
     return arr;
