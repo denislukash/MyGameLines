@@ -25,7 +25,6 @@ function createFieldOnHTML(matrix) {
             var cell = document.createElement("td");
             cell.innerHTML = matrix[row][column];
             tr.appendChild(cell);
-            cell.className = "cell";
             cell.dataset.y = row;
             cell.dataset.x = column;
         }
@@ -35,16 +34,18 @@ function createFieldOnHTML(matrix) {
 
 function getObjForEmptyCell() {
     return {
-        toString: function () {
+        toString: function () { //for normal display object on field
             return "";
         }
     };
 }
 
-var matrix = getMatrix(9, 9);
+var defineHeight = 9;
+var defineWidth = 9;
 
+var matrix = getMatrix(defineHeight, defineWidth);
 var parentOfGame_matrix = document.getElementById("game-field");
-
 parentOfGame_matrix.appendChild( createFieldOnHTML(matrix) );
-
+document.getElementById("game-area").classList.add("field9x9");
 var table = document.getElementById("game-matrix");
+

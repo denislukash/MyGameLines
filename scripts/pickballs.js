@@ -6,7 +6,7 @@ function pickTheBall (event) {
     var x = target.parentElement.getAttribute("data-x");
     var y = target.parentElement.getAttribute("data-y");
 
-    matrix[y][x] = createBallObject(matrix[y][x].color);
+    matrix[y][x] = new CreateBallObject(matrix[y][x].color);
     AddBallToFieldFromMatrix(y, x, "picked");
 }
 
@@ -38,7 +38,7 @@ function moveBall(event) {
             if (matrix[row][column].status == "picked") {
                 info.textContent = "Шар перемещается";
 
-                matrix[y][x] = createBallObject(matrix[row][column].color);
+                matrix[y][x] = new CreateBallObject(matrix[row][column].color);
                 AddBallToFieldFromMatrix(y, x, "unpicked");
 
                 matrix[row][column] = getObjForEmptyCell();
@@ -46,10 +46,10 @@ function moveBall(event) {
 
                 steps.textContent = counterForSteps(1);
 
-                if(findOneColorBalls() || findOneColorBalls1()){
+                if(findOneColorBalls(quantityOfDeleteBalls) || findOneColorBalls1(quantityOfDeleteBalls)){
                     return;
                 }else {
-                    setTimeout(addRandomBallToField, 1000, 3);
+                    setTimeout(addRandomBallToField, 1000, quantityOfRandomBalls);
                 }
             }
         });
@@ -64,6 +64,10 @@ function forEachCellandColor(callback) {
     }
 }
 
-parentOfGame_matrix.addEventListener("click", pickAnotherBall);
+var quantityOfDeleteBalls = 4;
 
-parentOfGame_matrix.addEventListener("click", moveBall);
+var tableParent = document.getElementById("game-field");
+
+tableParent.addEventListener("click", pickAnotherBall);
+
+tableParent.addEventListener("click", moveBall);

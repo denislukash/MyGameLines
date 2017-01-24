@@ -5,7 +5,7 @@ function AddBallToFieldFromMatrix(y, x, status_of_ball) {
     var cell = rows.cells[x];
     
     if(status_of_ball == undefined){
-        cell.innerHTML = matrix[y][x];// if call fn without status it's mean we want delete ball
+        cell.innerHTML = matrix[y][x];// if call fn without status, it's mean we want delete ball
     }else{
         matrix[y][x].status = status_of_ball;
         cell.innerHTML = matrix[y][x][status_of_ball].outerHTML;
@@ -25,7 +25,7 @@ function addRandomBallToField(count) {
         var randomForMatrixColumn = getRandomInteger(0, matrix.length);
 
         if( cellIsEmpty(randomForMatrixRow, randomForMatrixColumn) ){
-            matrix[randomForMatrixRow][randomForMatrixColumn] = createBallObject( getRandomColor() );
+            matrix[randomForMatrixRow][randomForMatrixColumn] = new CreateBallObject( getRandomColor() );
             AddBallToFieldFromMatrix(randomForMatrixRow, randomForMatrixColumn, "unpicked");
         }else{
             --i; //if cell is not empty, iteration beck for one step
@@ -44,16 +44,14 @@ function createHTMLelementForBall(color) {
     return img;
 }
 
-function createBallObject(color) {
+function CreateBallObject(color) {//constructor
     // ball - object with properties unpicked and picked(element img with jump or permanent ball)
-    var ball = {};
-    ball.color = color;
-    ball.unpicked = createHTMLelementForBall(color);
-    ball.picked = createHTMLelementForBall(getColorForPickedBall(color));
-    ball.toString = function () {
+    this.color = color;
+    this.unpicked = createHTMLelementForBall(color);
+    this.picked = createHTMLelementForBall(getColorForPickedBall(color));
+    this.toString = function () {
         return "";
     };
-    return ball;
 }
 
 function cellIsEmpty(y, x) {
@@ -72,5 +70,6 @@ function getColorForPickedBall(color) {
     return color + "_picked";
 }
 
+var quantityOfRandomBalls = 3;
 
-addRandomBallToField(3);
+addRandomBallToField(quantityOfRandomBalls);

@@ -1,6 +1,6 @@
 "use strict";
 
-function findOneColorBalls() {
+function findOneColorBalls(deleteBallsValue) {
     var coordinatesOneColorBallsObject = {};
     var sameColorBalls = [];
 
@@ -18,14 +18,8 @@ function findOneColorBalls() {
                    if (sameColorBalls[0] === matrix[i][j].color) {
                        coordinatesOneColorBallsObject[j] = {y: i, x: j};
                        sameColorBalls.unshift(matrix[i][j].color);
-
-                       if(sameColorBalls.length >= 4){
-                           info.textContent = "Удаление шаров";
-                           setTimeout(deleteSameColorBall, 700, coordinatesOneColorBallsObject, sameColorBalls);
-                           return true;
-                       }
-
                    }else{
+                       if(sameColorBalls.length >= deleteBallsValue)markBallsForDelete(coordinatesOneColorBallsObject);
                        deleteAllKeysInObj(coordinatesOneColorBallsObject);
                        sameColorBalls.splice(0, sameColorBalls.length);
                        coordinatesOneColorBallsObject[j] = {y: i, x: j};
@@ -33,6 +27,7 @@ function findOneColorBalls() {
                    }
                }
            }else {
+               if(sameColorBalls.length >= deleteBallsValue)markBallsForDelete(coordinatesOneColorBallsObject);
                sameColorBalls.splice(0, sameColorBalls.length);
                deleteAllKeysInObj(coordinatesOneColorBallsObject);
            }
@@ -40,7 +35,7 @@ function findOneColorBalls() {
    }
 }
 
-function findOneColorBalls1() {
+function findOneColorBalls1(deleteBallsValue) {
     var coordinatesOneColorBallsObject = {};
     var sameColorBalls = [];
 
@@ -58,13 +53,8 @@ function findOneColorBalls1() {
                     if (sameColorBalls[0] === matrix[j][i].color) {
                         coordinatesOneColorBallsObject[j] = {y: j, x: i};
                         sameColorBalls.unshift(matrix[j][i].color);
-
-                        if(sameColorBalls.length >= 4){
-                            info.textContent = "Удаление шаров";
-                            setTimeout(deleteSameColorBall, 700, coordinatesOneColorBallsObject, sameColorBalls);
-                            return true;
-                        }
                     }else{
+                        if(sameColorBalls.length >= deleteBallsValue)markBallsForDelete(coordinatesOneColorBallsObject);
                         deleteAllKeysInObj(coordinatesOneColorBallsObject);
                         sameColorBalls.splice(0, sameColorBalls.length);
                         coordinatesOneColorBallsObject[j] = {y: j, x: i};
@@ -72,24 +62,28 @@ function findOneColorBalls1() {
                     }
                 }
             }else {
+                if(sameColorBalls.length >= deleteBallsValue)markBallsForDelete(coordinatesOneColorBallsObject);
                 sameColorBalls.splice(0, sameColorBalls.length);
                 deleteAllKeysInObj(coordinatesOneColorBallsObject);
             }
         }
     }
+    setTimeout(deleteSameColorBall, 700);
 }
 
-function deleteSameColorBall(obj, array) {
+function deleteSameColorBall() {
 
-    for (var key in obj){
-        var y = obj[key].y;
-        var x = obj[key].x;
-        matrix[y][x] = getObjForEmptyCell();
-        AddBallToFieldFromMatrix(y, x);
+    for(var i = 0; i < matrix.length; i++) {
+
+        for (var j = 0; j < matrix[i].length; j++) {
+
+            if(matrix[i][j].hasOwnProperty("delete")){
+                matrix[i][j] = getObjForEmptyCell();
+                AddBallToFieldFromMatrix(i, j);
+                points.innerText = counterForPoints(1);
+            }
+        }
     }
-    points.innerText = counterForPoints(array.length);
-    deleteAllKeysInObj(obj);
-    array.splice(0, array.length);
     info.textContent = "Ваш ход";
 }
 
@@ -100,3 +94,10 @@ function deleteAllKeysInObj(obj) {
     }
 }
 
+function markBallsForDelete(obj) {
+    for(var key in obj){
+        var i = obj[key].y;
+        var j = obj[key].x;
+        matrix[i][j].delete = "ok";
+    }
+}
