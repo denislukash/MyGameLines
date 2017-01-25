@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/settingsmenu.css">
 </head>
 <body>
 <header id="head"></header>
@@ -32,9 +33,34 @@
         </tr>
     </table>
     <div class="button_container">
-    <button class="size_field" id="field_7x7" type="button">7x7</button>
-    <button class="size_field" id="field_9x9" type="button">9x9</button>
-    <button class="size_field" id="field_11x11" type="button">11x11</button>
+        <div class="buttons">
+    <button class="size_field" id="new_game" type="button">Новая игра</button>
+    <button class="size_field" id="settings_button" type="button">Настройки</button>
+        </div>
+    </div>
+</div>
+<p>На поле стандартного размера 9х9 каждый ход появляются 3 шара
+    разных цветов.Всего в игре 7 цветов, из них нужно составлять
+    линии одного цвета по горизонтали и вертикали, удаление происходит
+    при построении линии от 4 и больше шаров. За каждое удаление шаров
+    игроку начисляются очки(описание начисления очков).После удаления
+    шаров - появление 3 следующих шаров откладывается до следующего хода.
+    На нижней панели игровой зоны можно выбрать различные размеры поля.
+    При размере поля 7х7 что бы шары удалились достаточно собрать
+    в линию 3 и больше шаров и после каждого хода появляются 2 шара
+    разного цвета. В случае с размером поля 11х11 удаление происходит
+    после построения 5 и более шаров одного цвета в линию,а после
+    хода на поле появляются 4 шара разного цвета.Задача набрать как
+    можно больше очков и продержаться как можно больше ходов. Удачи!</p>
+<div id="game_parameters" class="background_window" style="display: none;">
+    <div class="settings_window">
+           <table id="settings_table">
+                <tr class="name_window"></tr>
+                <tr>
+                    
+                </tr>
+                <tr></tr>
+           </table>
     </div>
 </div>
 <script src="scripts/field.js"></script>

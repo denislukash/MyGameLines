@@ -1,0 +1,41 @@
+.button_container {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.buttons{
+    margin: 0 auto;
+    width: 205px;
+}
+
+.size_field {
+    width: 100px;
+    border-radius: 5px;
+}
+
+.background_window {
+    background-color: #55387f;
+    position: fixed;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    opacity: 0.5;
+}
+#settings_table {
+    width: 200px;
+    height: 200px;
+    border: solid black;
+    margin: 0 auto;
+}
+
+.settings_window {
+
+}
+
+p {
+    overflow: hidden;
+}

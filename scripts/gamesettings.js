@@ -1,4 +1,8 @@
 "use strict";
+function openWinSettings(){
+    var gameParamWindow = document.getElementById("game_parameters");
+    gameParamWindow.style.display = "table";
+}
 
 function swapField(height, width) {
     matrix = getMatrix(height, width);
@@ -35,10 +39,14 @@ function setsCountersToZero() {
     steps.innerText = 0;
 }
 
-var button7x7 = document.getElementById("field_7x7");
-var button9x9 = document.getElementById("field_9x9");
-var button11x11 = document.getElementById("field_11x11");
+// var button7x7 = document.getElementById("field_7x7");
+// var button9x9 = document.getElementById("field_9x9");
+// var button11x11 = document.getElementById("field_11x11");
+var settingsButton = document.getElementById("settings_button");
 var game_area = document.getElementById("game-area");
+
+
+
 
 game_area.clearClassList = function(elem) {
     var classList = game_area.classList;
@@ -54,12 +62,10 @@ game_area.removeClassList = function(elem, classArray) {
     classList.remove.apply(classList, classArray);
 };
 
-button7x7.addEventListener("click", function () {
-    swapField(7, 7);
-});
-button9x9.addEventListener("click", function () {
-    swapField(9, 9)
-});
-button11x11.addEventListener("click", function () {
-    swapField(11, 11)
-});
+settingsButton.addEventListener("click", openWinSettings);
+// button9x9.addEventListener("click", function () {
+//     swapField(9, 9)
+// });
+// button11x11.addEventListener("click", function () {
+//     swapField(11, 11)
+// });
