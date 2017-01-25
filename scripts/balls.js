@@ -5,7 +5,7 @@ function AddBallToFieldFromMatrix(y, x, status_of_ball) {
     var cell = rows.cells[x];
     
     if(status_of_ball == undefined){
-        cell.innerHTML = matrix[y][x];// if call fn without status, it's mean we want delete ball
+        cell.innerHTML = matrix[y][x];// if call fn without argument status, it's mean we want delete ball
     }else{
         matrix[y][x].status = status_of_ball;
         cell.innerHTML = matrix[y][x][status_of_ball].outerHTML;

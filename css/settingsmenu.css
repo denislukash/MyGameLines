@@ -8,38 +8,33 @@
     width: 205px;
 }
 
-.size_field {
-    width: 100px;
+.button {
+    min-width: 50px;
     border-radius: 5px;
 }
 
 .background_window {
-    background-color: #747360;
+    background-color: rgba(116, 115, 96, 0.71);
     position: fixed;
-    width: 100%;
     min-width: 100%;
-    height: 100%;
     min-height: 100%;
     top: 0;
     left: 0;
     z-index: 100;
-    opacity: 0.5;
 }
 #settings_table {
     width: 200px;
     height: 200px;
     border: 8px solid rgb(61, 55, 182);
-    margin: 200px 200px;
+    margin: 200px;
     background-color: #fff0b2;
-    opacity: 1;
-    border-radius: 25px;
+    border-radius: 30px;
 }
-
-.settings_window{
-
+.settings_confirm {
+    margin: 0 auto;
+    width: 35px;
 }
-
-p {
+.text {
     overflow: hidden;
 }
 
