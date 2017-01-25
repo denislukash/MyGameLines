@@ -14,7 +14,7 @@
 }
 
 .background_window {
-    background-color: #55387f;
+    background-color: #747360;
     position: fixed;
     width: 100%;
     min-width: 100%;
@@ -28,14 +28,31 @@
 #settings_table {
     width: 200px;
     height: 200px;
-    border: solid black;
-    margin: 0 auto;
+    border: 8px solid rgb(61, 55, 182);
+    margin: 200px 200px;
+    background-color: #fff0b2;
+    opacity: 1;
+    border-radius: 25px;
 }
 
-.settings_window {
+.settings_window{
 
 }
 
 p {
     overflow: hidden;
+}
+
+.name_window {
+    background-color: rgb(61, 55, 182);
+    height: 30px;
+    border-radius: inherit;
+}
+
+.name_window_settings {
+    font-size: 30px;
+}
+
+.change_size_settings {
+    padding-top: 15px;
 }

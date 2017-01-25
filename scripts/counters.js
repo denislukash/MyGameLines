@@ -11,16 +11,16 @@ function stepCounter() {
 }
 
 /*здесь будет функция считающаяя время,когда я разберусь как ее делать)))*/
-var date = new Date();
-
- date.setHours(0, 0, 0);
-
- var hours = date.getHours();
- var minutes = date.getMinutes();
- var seconds = date.getSeconds();
-
- var fieldForTimer = document.getElementById("time");
- fieldForTimer.innerText = hours + ":" + minutes + ":" + seconds;
+// var date = new Date();
+//
+//  date.setHours(0, 0, 0);
+//
+//  var hours = date.getHours();
+//  var minutes = date.getMinutes();
+//  var seconds = date.getSeconds();
+//
+//  var fieldForTimer = document.getElementById("time");
+//  fieldForTimer.innerText = hours + ":" + minutes + ":" + seconds;
 
 var info = document.getElementById("comment");
 

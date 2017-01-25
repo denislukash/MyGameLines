@@ -15,8 +15,16 @@
                 <table>
                     <tr style="width: 100%">
                         <td class="score">Очки: <span id="score">0</span></td>
-                        <td class="time"> Время: <span id="time"></span> </td>
                         <td class="steps">Ходы: <span id="step">0</span> </td>
+                        <td class="next_balls_area">
+                            <table class="next_balls_table">
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </td>
                     </tr>
                 </table>
             </td>
@@ -55,11 +63,25 @@
 <div id="game_parameters" class="background_window" style="display: none;">
     <div class="settings_window">
            <table id="settings_table">
-                <tr class="name_window"></tr>
-                <tr>
-                    
+                <tr class="name_window ">
+                    <td class="name_window_settings">Настройки</td>
                 </tr>
-                <tr></tr>
+                <tr >
+                    <td class="change_size_settings">
+                        <select name="select_size">
+                            <option disabled selected>Выберите размер поля</option>
+                            <option>7Х7</option>
+                            <option>9Х9</option>
+                            <option>11Х11</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="hint">
+                        <label for="hint">Показывать следующие шары</label>
+                    </td>
+                </tr>
            </table>
     </div>
 </div>
