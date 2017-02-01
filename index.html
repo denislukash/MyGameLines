@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link rel="stylesheet" href="css/balls.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/settingsmenu.css">
 </head>
@@ -17,11 +19,12 @@
                         <td class="score">Очки: <span id="score">0</span></td>
                         <td class="steps">Ходы: <span id="step">0</span> </td>
                         <td class="next_balls_area">
-                            <table class="next_balls_table">
+                            <table id="next_ball_area" style="display: none">
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><div class="ball next_ball"></div></td>
+                                    <td><div class="ball next_ball"></div></td>
+                                    <td><div class="ball next_ball"></div></td>
+                                    <td><div class="ball next_ball"></div></td>
                                 </tr>
                             </table>
                         </td>
@@ -63,36 +66,26 @@
         можно больше очков и продержаться как можно больше ходов. Удачи!</p>
 </div>
 <div id="game_parameters" class="background_window" style="display: none;">
-    <div class="settings_window">
-           <table id="settings_table">
-                <tr class="name_window ">
-                    <td class="name_window_settings">Настройки</td>
-                </tr>
-                <tr >
-                    <td class="change_size_settings">
-                        <select name="select_size">
-                            <option disabled selected>Выберите размер поля</option>
-                            <option id="field_7x7">7Х7</option>
-                            <option id="field_9x9">9Х9</option>
-                            <option id="field_11x11">11Х11</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" id="hint">
-                        <label for="hint">Показывать следующие шары</label>
-                    </td>
-                </tr>
-               <tr>
-                   <td>
-                       <div class="settings_confirm">
-                           <button id="confirm_button" class="button" type="button">ОК</button>
-                       </div>
-                   </td>
-               </tr>
-           </table>
-    </div>
+        <form class="form" id="settings_form">
+            <div class="settings"><span>Настройки</span></div>
+            <span>Выберите размер поля:</span><br>
+            <div class="radio_area">
+                <input type="radio" name="field_size" id="radio_1" value="field7x7"><label for="radio_1">7x7</label>
+            </div>
+            <div class="radio_area">
+                <input type="radio" id="radio_2" name="field_size" value="field9x9"><label for="radio_2">9x9</label>
+            </div>
+            <div class="radio_area last_element">
+                <input type="radio" id="radio_3" name="field_size" value="field11x11"><label for="radio_3">11x11</label>
+            </div>
+            <div class="checkbox_area">
+                <input type="checkbox" id="checkbox">
+                <label for="checkbox">Показывать следующие шары</label>
+            </div>
+            <div class="confirm_button_area">
+                <input type="image" src="image/ok_button.png" class="confirm_button">
+            </div>
+        </form>
 </div>
 <script src="scripts/field.js"></script>
 <script src="scripts/gamesettings.js"></script>

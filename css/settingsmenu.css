@@ -22,32 +22,77 @@
     left: 0;
     z-index: 100;
 }
-#settings_table {
-    width: 200px;
-    height: 200px;
-    border: 8px solid rgb(61, 55, 182);
-    margin: 200px;
-    background-color: #fff0b2;
-    border-radius: 30px;
-}
-.settings_confirm {
-    margin: 0 auto;
-    width: 35px;
-}
+
 .text {
     overflow: hidden;
 }
 
-.name_window {
-    background-color: rgb(61, 55, 182);
-    height: 30px;
-    border-radius: inherit;
+.form {
+    border: 5px solid aquamarine;
+    border-radius: 25px;
+    width: 220px;
+    height: 220px;
+    margin-top: 50px;
+    margin-left: 50px;
+    background-color: white;
+    font-family: 'Pacifico', cursive;
 }
 
-.name_window_settings {
-    font-size: 30px;
+.settings {
+    padding-top: 5px;
+    font-size: 20px;
+    text-align: center;
+    background-color: aquamarine;
+    border-radius: 10px 10px 0 0;
 }
 
-.change_size_settings {
+.radio_area {
+    width: 50%;
+    float: left;
+}
+
+.last_element{
+    float: none;
+    margin: 0 auto;
+}
+
+.checkbox_area {
+    font-size: 12px;
     padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+.confirm_button {
+    width: 70px;
+    height: 30px;
+}
+
+.confirm_button_area{
+    width: 30%;
+    margin: 0 auto;
+}
+
+.next_balls_area {
+    width: 140px;
+}
+
+#next_ball_area td{
+    width: 35px;
+    height: 35px;
+}
+
+
+.field9x9 {
+    width: 350px;
+    min-height: 410px;
+}
+
+.field7x7 {
+    width: 300px;
+    min-height: 300px;
+}
+
+.field11x11 {
+    width: 420px;
+    min-height: 410px;
 }

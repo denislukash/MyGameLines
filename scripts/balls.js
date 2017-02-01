@@ -1,75 +1,108 @@
 "use strict";
 
-function AddBallToFieldFromMatrix(y, x, status_of_ball) {
-    var rows = table.rows[y];
-    var cell = rows.cells[x];
-    
-    if(status_of_ball == undefined){
-        cell.innerHTML = matrix[y][x];// if call fn without argument status, it's mean we want delete ball
-    }else{
-        matrix[y][x].status = status_of_ball;
-        cell.innerHTML = matrix[y][x][status_of_ball].outerHTML;
+function addBallToFieldFromMatrix(y, x) {
+    getBallElement(y, x).classList.add(matrix[y][x].color);
+}
+
+function deleteBallFromField(y, x) {
+    getBallElement(y, x).classList.remove("animation");
+    getBallElement(y, x).classList.remove(matrix[y][x].color);
+}
+
+function getBallElement(row, column) {
+    var rows = table.rows[row];
+    var cell = rows.cells[column];
+    return cell.firstChild;
+}
+
+function getNextRandomBallArray(count) {
+    var arr = [];
+
+    for(var i = 0; i < count; i++){
+        arr[i] = new CreateBallObject( getRandom.color() );
     }
+    return arr;
 }
 
-function getRandomColor() {
-    var color = ["red", "yellow", "green", "dark_blue", "pink", "blue", "dark"];
-    var index = getRandomInteger(0, color.length);
-    return color[index];
-}
+function addRandomBallToField(array) {
 
-function addRandomBallToField(count) {
+    for (var i = 0; i < array.length; i++){
+        var randomForMatrixRow =  getRandom.integer(0, matrix.length);
+        var randomForMatrixColumn = getRandom.integer(0, matrix.length);
 
-    for (var i = 0; i < count; i++){
-        var randomForMatrixRow =  getRandomInteger(0, matrix.length);
-        var randomForMatrixColumn = getRandomInteger(0, matrix.length);
-
-        if( cellIsEmpty(randomForMatrixRow, randomForMatrixColumn) ){
-            matrix[randomForMatrixRow][randomForMatrixColumn] = new CreateBallObject( getRandomColor() );
-            AddBallToFieldFromMatrix(randomForMatrixRow, randomForMatrixColumn, "unpicked");
+        if( check.cellIsEmpty(randomForMatrixRow, randomForMatrixColumn) ){
+            matrix[randomForMatrixRow][randomForMatrixColumn] = array[i];
+            addBallToFieldFromMatrix(randomForMatrixRow, randomForMatrixColumn);
         }else{
-            --i; //if cell is not empty, iteration beck for one step
+            --i;
         }
     }
      findOneColorBalls();
      findOneColorBalls1();
-
-    if(info.textContent == "Выберите шар для начала игры") return;
-    info.textContent = "Ваш ход";
 }
 
-function createHTMLelementForBall(color) {
-    var img = document.createElement("img");
-    img.setAttribute("src", getURLofBall(color));
-    return img;
-}
-
-function CreateBallObject(color) {//constructor
-    // ball - object with properties unpicked and picked(element img with jump or permanent ball)
+function CreateBallObject(color) {
     this.color = color;
-    this.unpicked = createHTMLelementForBall(color);
-    this.picked = createHTMLelementForBall(getColorForPickedBall(color));
+    this.status = "unpicked";
     this.toString = function () {
         return "";
     };
+    this.pick_ball = function (elem) {
+        elem.classList.add("animation");
+        this.status = "picked";
+    };
+    this.unpick_ball = function (elem) {
+        console.log(elem.classList);
+        elem.classList.remove("animation");
+        this.status = "unpicked";
+    }
 }
 
-function cellIsEmpty(y, x) {
-    return !matrix[y][x].hasOwnProperty("status");
-}
-
-function getRandomInteger(min, max) {
-    return parseInt(Math.random() * (max - min) + min);
-}
-
-function getURLofBall(color) {
-    return './image/' + color + '.gif';
-}
-
-function getColorForPickedBall(color) {
-    return color + "_picked";
-}
+var check = {
+    cellIsEmpty: function (y, x) {
+        return !matrix[y][x].hasOwnProperty("color");
+    },
+    ballIsPicked: function (y, x) {
+        return matrix[y][x].status === "picked";
+    }
+};
 
 var quantityOfRandomBalls = 3;
 
-addRandomBallToField(quantityOfRandomBalls);
+var getRandom = {
+    color: function () {
+        var color = ["red", "yellow", "green", "dark_blue", "pink", "blue", "dark"];
+        var index = this.integer(0, color.length);
+        return color[index];
+    },
+    integer: function (min, max) {
+        return parseInt(Math.random() * (max - min) + min);
+    }
+};
+
+var displayNextBall = {
+    display_element_collection: function () {
+        return document.querySelectorAll(".next_ball");
+    },
+
+    set: function (array) {
+        for(var i = 0; i < array.length; i++){
+            displayNextBall.display_element_collection()[i].classList.add(array[i].color);
+        }
+    },
+
+    delete: function (array) {
+        for(var i = 0; i < array.length; i++){
+            displayNextBall.display_element_collection()[i].classList.remove(array[i].color);
+        }
+    }
+};
+
+
+var firstRandom = getNextRandomBallArray(quantityOfRandomBalls);
+
+addRandomBallToField(firstRandom);
+
+var nextRandom = getNextRandomBallArray(quantityOfRandomBalls);
+
+displayNextBall.set(nextRandom);

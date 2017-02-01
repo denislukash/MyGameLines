@@ -23,10 +23,12 @@ function createFieldOnHTML(matrix) {
 
         for (var column = 0; column < matrix[row].length; column++){
             var cell = document.createElement("td");
-            cell.innerHTML = matrix[row][column];
+            var ball = document.createElement("div");
+            cell.appendChild(ball);
             tr.appendChild(cell);
-            cell.dataset.y = row;
-            cell.dataset.x = column;
+            ball.classList.add("ball");
+            ball.dataset.y = row;
+            ball.dataset.x = column;
         }
     }
     return table;

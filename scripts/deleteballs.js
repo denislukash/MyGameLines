@@ -1,5 +1,6 @@
 "use strict";
 
+//так я и не придумал как эти огромные функции упростить, буду еще думать
 function findOneColorBalls(deleteBallsValue) {
     var coordinatesOneColorBallsObject = {};
     var sameColorBalls = [];
@@ -8,7 +9,7 @@ function findOneColorBalls(deleteBallsValue) {
 
        for(var j = 0; j < matrix[i].length; j++){
 
-           if ( !cellIsEmpty(i, j) ){
+           if ( !check.cellIsEmpty(i, j) ){
 
                if (sameColorBalls.length === 0){
                    coordinatesOneColorBallsObject[j] = {y: i, x: j};
@@ -43,7 +44,7 @@ function findOneColorBalls1(deleteBallsValue) {
 
         for(var j = 0; j < matrix[i].length; j++){
 
-            if ( !cellIsEmpty(j, i) ){
+            if ( !check.cellIsEmpty(j, i) ){
 
                 if (sameColorBalls.length === 0){
                     coordinatesOneColorBallsObject[j] = {y: j, x: i};
@@ -72,19 +73,17 @@ function findOneColorBalls1(deleteBallsValue) {
 }
 
 function deleteSameColorBall() {
-
     for(var i = 0; i < matrix.length; i++) {
 
         for (var j = 0; j < matrix[i].length; j++) {
 
             if(matrix[i][j].hasOwnProperty("delete")){
+                deleteBallFromField(i, j);
                 matrix[i][j] = getObjForEmptyCell();
-                AddBallToFieldFromMatrix(i, j);
                 points.innerText = counterForPoints(1);
             }
         }
     }
-    info.textContent = "Ваш ход";
 }
 
 function deleteAllKeysInObj(obj) {

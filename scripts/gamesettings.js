@@ -1,58 +1,75 @@
 "use strict";
-function openWinSettings(){
-    var gameParamWindow = document.getElementById("game_parameters");
-    gameParamWindow.style.display = "table";
-}
+//тут у меня прилично треша, только понаписывал это всё, нужно еще доводить до ума
+var winSettings = {
+    gameParamWindow: function () {
+        return document.getElementById("game_parameters");
+    },
 
-function closeWinSettings() {
-    var gameParamWindow = document.getElementById("game_parameters");
-    gameParamWindow.style.display = "none";
-}
+    open: function () {
+        winSettings.gameParamWindow().style.display = "table";
+    },
+
+    close: function () {
+        winSettings.gameParamWindow().style.display = "none";
+    }
+};
 
 function swapField(height, width) {
     matrix = getMatrix(height, width);
     table.remove();
     parentOfGame_matrix.appendChild( createFieldOnHTML(matrix) );
     table = document.getElementById("game-matrix");
-    setsCountersToZero();
-    fieldAndGameSettings(height, width);
-    addRandomBallToField(quantityOfRandomBalls);
 }
 
-function fieldAndGameSettings(height, width) {
-    //some hardcore
-    game_area.clearClassList();
-    if(height === 7 && width === 7){
-        game_area.classList.add("field7x7");
-        quantityOfDeleteBalls = 3;
-        quantityOfRandomBalls = 2;
-    }else if(height === 9 && width === 9){
-        game_area.classList.add("field9x9");
-        quantityOfDeleteBalls = 4;
-        quantityOfRandomBalls = 3;
-    }else if(height === 11 && width === 11){
-        game_area.classList.add("field11x11");
-        quantityOfDeleteBalls = 5;
-        quantityOfRandomBalls = 4;
+function applySettings() {
+    //эту функцию буду как то разделять по логике,пока не сообразил как
+    if(this.field !== ""){
+        game_area.clearClassList();
+        game_area.classList.add(this.field);
+        if(this.field === "field7x7"){
+            swapField(7, 7);
+            quantityOfDeleteBalls = 3;
+            quantityOfRandomBalls = 2;
+        }else if(this.field === "field9x9"){
+            swapField(9, 9);
+            quantityOfDeleteBalls = 4;
+            quantityOfRandomBalls = 3;
+        }else if(this.field === "field11x11"){
+            swapField(11, 11);
+            quantityOfDeleteBalls = 5;
+            quantityOfRandomBalls = 4;
+        }
+        firstRandom = getNextRandomBallArray(quantityOfRandomBalls);
+        addRandomBallToField(firstRandom);
+        nextRandom = getNextRandomBallArray(quantityOfRandomBalls);
+        displayNextBall.set(nextRandom);
     }
+    //вот тут у меня получается с чекбокса всегда приходит ON, как правильно
+    //считывать инфу с чекбокса?
+    if(this.hint = "on")document.getElementById("next_ball_area").style.display = "table";
 }
 
-function setsCountersToZero() {
+function setCountersToZero() {
     counterForPoints = stepCounter();
     counterForSteps = stepCounter();
     points.innerText = 0;
     steps.innerText = 0;
 }
 
-var button7x7 = document.getElementById("field_7x7");
-var button9x9 = document.getElementById("field_9x9");
-var button11x11 = document.getElementById("field_11x11");
-var confirmButton = document.getElementById("confirm_button");
+document.querySelector(".confirm_button").addEventListener("click", function (event) {
+    var form = document.forms["settings_form"];
+    var settings_info = {};
+    settings_info.field = form.elements["field_size"].value;
+    settings_info.hint = form.elements["checkbox"].value;
+
+    event.preventDefault();
+    winSettings.close();
+
+    applySettings.call(settings_info);
+    setCountersToZero();
+});
 var settingsButton = document.getElementById("settings_button");
 var game_area = document.getElementById("game-area");
-
-
-
 
 game_area.clearClassList = function(elem) {
     var classList = game_area.classList;
@@ -68,15 +85,4 @@ game_area.removeClassList = function(elem, classArray) {
     classList.remove.apply(classList, classArray);
 };
 
-settingsButton.addEventListener("click", openWinSettings);
-confirmButton.addEventListener("click", closeWinSettings);
-
-button7x7.addEventListener("click", function () {
-    swapField(7, 7)
-});
-button9x9.addEventListener("click", function () {
-    swapField(9, 9)
-});
-button11x11.addEventListener("click", function () {
-    swapField(11, 11)
-});
+settingsButton.addEventListener("click", winSettings.open);

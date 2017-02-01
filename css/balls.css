@@ -1,0 +1,48 @@
+.animation {
+    animation: jumping 0.3s infinite ease-in-out;
+}
+
+@keyframes jumping {
+    0% {margin-top: 0;}
+    50% {margin-top: -10px;}
+}
+
+.ball{
+    width: 35px;
+    height: 35px;
+}
+
+.red {
+    background: url(../image/red.gif);
+    cursor: pointer;
+}
+
+.blue {
+    background: url(../image/blue.gif);
+    cursor: pointer;
+}
+
+.dark {
+    background: url(../image/dark.gif);
+    cursor: pointer;
+}
+
+.dark_blue {
+    background: url(../image/dark_blue.gif);
+    cursor: pointer;
+}
+
+.green {
+    background: url(../image/green.gif);
+    cursor: pointer;
+}
+
+.pink {
+    background: url(../image/pink.gif);
+    cursor: pointer;
+}
+
+.yellow {
+    background: url(../image/yellow.gif);
+    cursor: pointer;
+}
