@@ -39,9 +39,12 @@ function moveBall(event) {
                         return;
                     }else {
                         setTimeout(addRandomBallToField, 1000, nextRandom);
-                        displayNextBall.delete(nextRandom);
-                        nextRandom = getNextRandomBallArray(quantityOfRandomBalls);
-                        displayNextBall.set(nextRandom);
+                        setTimeout((function () {
+                            displayNextBall.delete(nextRandom);
+                            nextRandom = getNextRandomBallArray(quantityOfRandomBalls);
+                            displayNextBall.set(nextRandom);
+                        }),1000);
+
                     }
                 }
             }

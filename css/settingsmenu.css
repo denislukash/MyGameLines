@@ -27,6 +27,11 @@
     overflow: hidden;
 }
 
+@font-face {
+    font-family: Pacifico;
+    src: url(https://fonts.googleapis.com/css?family=Pacifico);
+}
+
 .form {
     border: 5px solid aquamarine;
     border-radius: 25px;
@@ -59,7 +64,7 @@
 .checkbox_area {
     font-size: 12px;
     padding-top: 15px;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
 }
 
 .confirm_button {
@@ -88,7 +93,7 @@
 }
 
 .field7x7 {
-    width: 300px;
+    width: 270px;
     min-height: 300px;
 }
 

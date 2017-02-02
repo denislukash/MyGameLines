@@ -39,6 +39,7 @@ function applySettings() {
             quantityOfDeleteBalls = 5;
             quantityOfRandomBalls = 4;
         }
+        displayNextBall.delete(nextRandom);
         firstRandom = getNextRandomBallArray(quantityOfRandomBalls);
         addRandomBallToField(firstRandom);
         nextRandom = getNextRandomBallArray(quantityOfRandomBalls);
@@ -56,11 +57,26 @@ function setCountersToZero() {
     steps.innerText = 0;
 }
 
+function clearClassList(elem) {
+    var classList = elem.classList;
+    var classListAsArray = new Array(classList.length);
+    for (var i = 0, len = classList.length; i < len; i++) {
+        classListAsArray[i] = classList[i];
+    }
+    elem.removeClassList(elem, classListAsArray);
+}
+
+function removeClassList(elem, classArray) {
+    var classList = elem.classList;
+    classList.remove.apply(classList, classArray);
+}
+
 document.querySelector(".confirm_button").addEventListener("click", function (event) {
     var form = document.forms["settings_form"];
     var settings_info = {};
     settings_info.field = form.elements["field_size"].value;
     settings_info.hint = form.elements["checkbox"].value;
+    console.log(settings_info.hint);
 
     event.preventDefault();
     winSettings.close();
@@ -71,18 +87,11 @@ document.querySelector(".confirm_button").addEventListener("click", function (ev
 var settingsButton = document.getElementById("settings_button");
 var game_area = document.getElementById("game-area");
 
-game_area.clearClassList = function(elem) {
-    var classList = game_area.classList;
-    var classListAsArray = new Array(classList.length);
-    for (var i = 0, len = classList.length; i < len; i++) {
-        classListAsArray[i] = classList[i];
-    }
-    game_area.removeClassList(elem, classListAsArray);
+game_area.clearClassList = function () {
+    clearClassList(game_area);
 };
-
-game_area.removeClassList = function(elem, classArray) {
-    var classList = game_area.classList;
-    classList.remove.apply(classList, classArray);
+game_area.removeClassList = function () {
+    return  removeClassList(game_area)
 };
 
 settingsButton.addEventListener("click", winSettings.open);
