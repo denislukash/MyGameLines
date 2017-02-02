@@ -8,9 +8,18 @@
     width: 205px;
 }
 
-.button {
-    min-width: 50px;
+.button_new img {
+    width: 100px;
+    height: 30px;
     border-radius: 5px;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.button_sett img {
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
 }
 
 .background_window {
@@ -37,8 +46,8 @@
     border-radius: 25px;
     width: 220px;
     height: 220px;
-    margin-top: 50px;
-    margin-left: 50px;
+    margin-top: 20%;
+    margin-left: 30%;
     background-color: white;
     font-family: 'Pacifico', cursive;
 }

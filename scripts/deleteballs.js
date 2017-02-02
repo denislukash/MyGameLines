@@ -80,7 +80,7 @@ function deleteSameColorBall() {
             if(matrix[i][j].hasOwnProperty("delete")){
                 deleteBallFromField(i, j);
                 matrix[i][j] = getObjForEmptyCell();
-                points.innerText = counterForPoints(1);
+
             }
         }
     }
@@ -93,7 +93,16 @@ function deleteAllKeysInObj(obj) {
     }
 }
 
+function calculateKeyInObj(obj) {
+    var result = 0;
+    for(var key in obj){
+        result++
+    }
+    return result;
+}
+
 function markBallsForDelete(obj) {
+    points.innerText = counterForPoints(calculatePoints(calculateKeyInObj(obj)));
     for(var key in obj){
         var i = obj[key].y;
         var j = obj[key].x;

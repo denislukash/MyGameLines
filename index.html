@@ -3,20 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/balls.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/settingsmenu.css">
 </head>
 <body>
-<header id="head"></header>
-<div id="game-area">
+<header id="header">
+    <div class="logo_nav_container">
+        <a href="#">Game Lines</a>
+        <div class="top_nav">
+            <ul class="top_nav_menu">
+                <li class="top_nav_menu_element"><a>Home</a></li>
+                <li class="top_nav_menu_element"><a href="#game">Game</a></li>
+                <li class="top_nav_menu_element"><a href="#rules">Rules</a></li>
+                <li class="top_nav_menu_element"><a>About</a></li>
+            </ul>
+            </div>
+            </div>
+    <div class="welcome">
+        <h1 class="welcome_text">WELCOME TO LINES</h1>
+        <h2 class="welcome_text_second">Your Favorite Java Scritp Game :)</h2>
+        <div class="start_button_area"><a class="start_button" href="#game">Lets go!</a></div>
+    </div>
+</header>
+<div class="holder">
+        <div class="rules">
+            <a name="rules"></a>
+            <h1>Rules</h1>
+            <div class="text_rules">
+                <p>On field standart size 9 x 9 every step appear 3 balls random color.
+                    At all, in game 7 different colors of ball,you must buid it at horisontal or
+                    vartical line. Balls are delit after 4 or more balls at line. For each delete balls
+                     you get scores( for 4 balls - 8, 5-15, 6-18, 7-21, 8-32, 9-36, 10-50, 11-55 ).
+                    After balls delete - appear random ball postponed to next move.On bottom side
+                    of game field you can chose field-size and can switch on hints.
+                    If field size 7x7 for delete enough 3 balls same color build on line.After
+                    each step appears 2 random balls. If field size 11x11, balls delete after 5 and more
+                    same color build on line and after steps appear 4 random balls.A task - score more
+                    points. Good luck!
+                     </p>
+            </div>
+        </div>
+    <div class="game_div">
+        <a name="game"></a>
+        <h1>Ta-da!! This is GAME!!!</h1>
+        <div id="game-area">
     <table>
         <tr id="score-and-time">
             <td>
                 <table>
                     <tr style="width: 100%">
-                        <td class="score">Очки: <span id="score">0</span></td>
-                        <td class="steps">Ходы: <span id="step">0</span> </td>
+                        <td class="score">Points: <span id="score">0</span></td>
+                        <td class="steps">Step: <span id="step">0</span> </td>
                         <td class="next_balls_area">
                             <table id="next_ball_area" style="display: none">
                                 <tr>
@@ -44,25 +86,25 @@
     </table>
     <div class="button_container">
         <div class="buttons">
-    <button class="button" id="new_game" type="button">Новая игра</button>
-    <button class="button" id="settings_button" type="button">Настройки</button>
+            <a id="new_game_button" class="button_new" >
+                <img src="image/ButtonNewGame.png">
+            </a>
+            <a id="settings_button" class="button_sett">
+                <img src="image/settings-button.png">
+            </a>
         </div>
     </div>
 </div>
-<div class="text">
-    <p>На поле стандартного размера 9х9 каждый ход появляются 3 шара
-        разных цветов.Всего в игре 7 цветов, из них нужно составлять
-        линии одного цвета по горизонтали и вертикали, удаление происходит
-        при построении линии от 4 и больше шаров. За каждое удаление шаров
-        игроку начисляются очки(описание начисления очков).После удаления
-        шаров - появление 3 следующих шаров откладывается до следующего хода.
-        На нижней панели игровой зоны можно выбрать различные размеры поля.
-        При размере поля 7х7 что бы шары удалились достаточно собрать
-        в линию 3 и больше шаров и после каждого хода появляются 2 шара
-        разного цвета. В случае с размером поля 11х11 удаление происходит
-        после построения 5 и более шаров одного цвета в линию,а после
-        хода на поле появляются 4 шара разного цвета.Задача набрать как
-        можно больше очков и продержаться как можно больше ходов. Удачи!</p>
+    </div>
+</div>
+<div class="footer">
+    <div class="git">
+        <h1>Follow on Git</h1>
+        <a target="_blank" href="https://github.com/denislukash/MyGame">
+            <img src="image/git_button.png" height="50px" width="100px">
+        </a>
+    </div>
+
 </div>
 <div id="game_parameters" class="background_window" style="display: none;">
         <form class="form" id="settings_form">

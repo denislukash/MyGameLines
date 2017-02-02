@@ -1,13 +1,120 @@
 body {
     min-width: 320px;
 }
+
+.holder {
+    width: 900px;
+    min-height: 300px;
+    margin: 0 auto;
+    font-family: 'Pacifico', cursive;
+    background-color: rgba(255, 180, 249, 0.43);
+}
+
+#header {
+    background: url(../image/home-background.jpg);
+    background-size: cover;
+    margin: 0 auto;
+    width: 900px;
+    height: 500px;
+}
+
+.logo_nav_container {
+    font-family: 'Indie Flower', cursive;
+    font-size: 25px;
+    height: 60px;
+}
+
+.logo_nav_container a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    float: left;
+    text-align: right;
+    padding-left: 50px;
+    padding-top: 30px;
+}
+
+.top_nav {
+    padding-left: 50%;
+    font-size: 15px;
+    height: 100%;
+}
+
+.top_nav_menu {
+    width: 100%;
+    height: 100%;
+    padding-top: 15px;
+}
+
+.top_nav_menu li{
+    display: inline;
+}
+
+.welcome {
+    padding-top: 15%;
+    width: 35%;
+    min-height: 200px;
+    margin: 0 auto;
+}
+.welcome_text,
+.welcome_text_second {
+    color: white;
+}
+.welcome_text{
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    text-align: center;
+}
+
+.welcome_text_second {
+    font-family: 'Pacifico', cursive;
+    font-size: 20px;
+}
+
+.start_button_area {
+    height: 30px;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.start_button {
+    font-family: 'Pacifico', cursive;
+    border: 2px solid white;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: white;
+    margin: 0 auto;
+}
+
+.rules h1,
+.game_div h1{
+    font-size: 25px;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.text_rules {
+    font-size: 15px;
+    padding: 20px;
+}
+
+.text_rules p {
+    line-height: 40px;
+}
+
+.game_div {
+    width: 100%;
+    min-height: 500px;
+    background: url(../image/background-site1.jpg);
+    background-size: cover;
+    padding-bottom: 50px;
+}
 #game-area {
-    margin: 20px 20px;
+    margin: 0 auto;
     background-color: white;
-    padding: 20px 15px 20px 15px;
+    padding: 20px 15px 5px 15px;
     border: 1px solid aqua;
     border-radius: 30px;
-    float: left;
 }
 
 #game-area table {
@@ -22,12 +129,6 @@ body {
     background-color: #ccdbdb;
     border: 1px solid black;
 }
-
- img{
-     width: 30px;
-     height: 30px;
-     margin: 0;
- }
 
  #game-area table {
      border-collapse: collapse;
@@ -56,3 +157,21 @@ body {
     text-align: left;
 }
 
+.footer {
+    width: 100%;
+    background-color: rgba(48, 44, 93, 1);
+    min-height: 100px;
+    font-family: 'Pacifico', cursive;
+}
+
+.git{
+    max-width: 300px;
+    height: 50%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.git h1 {
+    float: left;
+    padding-right: 15px;
+}
