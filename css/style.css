@@ -85,6 +85,9 @@ body {
     color: white;
     margin: 0 auto;
 }
+.rules {
+    background: white;
+}
 
 .rules h1,
 .game_div h1{
@@ -117,12 +120,7 @@ body {
     border-radius: 30px;
 }
 
-#game-area table {
-    width: 100%;
-}
-
 #game-field td {
-    position: relative;
     width: 35px;
     height: 35px;
     text-align: center;
@@ -133,6 +131,7 @@ body {
  #game-area table {
      border-collapse: collapse;
      padding: 20px 0 20px 20px;
+     width: 100%;
  }
 
  #game-area table,

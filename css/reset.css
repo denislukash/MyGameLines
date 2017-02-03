@@ -2,7 +2,6 @@
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, em, img, strong, sub, sup, b, u, i,  dl, dt, dd, ol, ul, li, fieldset, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
-    border: 0;
     outline: 0;                               /* обнуляем отступы и убираем бордюры */
     vertical-align: baseline;          /* приводим все к одной базовой линии */
     background: transparent;      /* чтобы не проскакивали левые фоны, установленные по умолчанию */
@@ -16,10 +15,10 @@ a {                                      	     /* ссылка не в обще�
     background:transparent;
     outline:none;
 }
-table {						/* устраняем отступы между ячейками таблицы */
-    border-collapse: collapse;
-    border-spacing: 0;
-}
+/*table {						!* устраняем отступы между ячейками таблицы *!*/
+    /*border-collapse: collapse;*/
+    /*border-spacing: 0;*/
+/*}*/
 td, td img {
     vertical-align: top;			/* возвращаем привычное вертикальное выравнивание */
 }
