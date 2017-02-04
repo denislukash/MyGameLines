@@ -7,7 +7,7 @@ function getMatrix(height, width) {
         arr[row] = [];
 
         for (var column = 0; column < width; column++){
-            arr[row][column] = getObjForEmptyCell(); //each cell - it's empty object
+            arr[row][column] = {};
         }
     }
     return arr;
@@ -34,13 +34,9 @@ function createFieldOnHTML(matrix) {
     return table;
 }
 
-function getObjForEmptyCell() {
-    return {
-        toString: function () { //for normal display object on field
-            return "";
-        }
-    };
-}
+Object.prototype.toString = function () {
+    return "";
+};
 
 var defineHeight = 9;
 var defineWidth = 9;

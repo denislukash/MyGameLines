@@ -5,7 +5,9 @@
 
 .buttons{
     margin: 0 auto;
-    width: 205px;
+    width: 100%;
+    padding-top: 10px;
+    height: 40px;
 }
 
 .button_new img {
@@ -20,6 +22,19 @@
     width: 40px;
     height: 30px;
     cursor: pointer;
+    padding-right: 10px;
+}
+
+.new_game_button_container {
+    width: 50%;
+    float: left;
+}
+
+.button_set_container {
+    width: 50%;
+    text-align: right;
+    height: 30px;
+    overflow: hidden;
 }
 
 .background_window {
@@ -98,15 +113,15 @@
 
 .field9x9 {
     width: 350px;
-    min-height: 410px;
+    height: 410px;
 }
 
 .field7x7 {
     width: 270px;
-    min-height: 300px;
+    height: 340px;
 }
 
 .field11x11 {
     width: 420px;
-    min-height: 410px;
+    height: 500px;
 }

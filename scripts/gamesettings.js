@@ -21,10 +21,16 @@ function swapField(height, width) {
     table = document.getElementById("game-matrix");
 }
 
+function clearClassField() {
+    game_area.classList.remove("field7x7");
+    game_area.classList.remove("field9x9");
+    game_area.classList.remove("field11x11");
+}
+
 function applySettings() {
     //эту функцию буду как то разделять по логике,пока не сообразил как
     if(this.field !== ""){
-        game_area.clearClassList();
+        clearClassField();
         game_area.classList.add(this.field);
         if(this.field === "field7x7"){
             swapField(7, 7);
@@ -57,20 +63,6 @@ function setCountersToZero() {
     steps.innerText = 0;
 }
 
-function clearClassList(elem) {
-    var classList = elem.classList;
-    var classListAsArray = new Array(classList.length);
-    for (var i = 0, len = classList.length; i < len; i++) {
-        classListAsArray[i] = classList[i];
-    }
-    elem.removeClassList(elem, classListAsArray);
-}
-
-function removeClassList(elem, classArray) {
-    var classList = elem.classList;
-    classList.remove.apply(classList, classArray);
-}
-
 document.querySelector(".confirm_button").addEventListener("click", function (event) {
     var form = document.forms["settings_form"];
     var settings_info = {};
@@ -84,14 +76,8 @@ document.querySelector(".confirm_button").addEventListener("click", function (ev
     applySettings.call(settings_info);
     setCountersToZero();
 });
-var settingsButton = document.getElementById("settings_button");
-var game_area = document.getElementById("game-area");
 
-game_area.clearClassList = function () {
-    clearClassList(game_area);
-};
-game_area.removeClassList = function () {
-    return  removeClassList(game_area)
-};
+var settingsButton = document.querySelector(".button_sett");
+var game_area = document.getElementById("game-area");
 
 settingsButton.addEventListener("click", winSettings.open);

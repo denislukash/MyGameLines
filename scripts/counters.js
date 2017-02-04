@@ -23,8 +23,6 @@ function calculatePoints(quantity) {
 
 }
 
-var info = document.getElementById("comment");
-
 var counterForSteps = stepCounter();
 
 var counterForPoints = stepCounter();

@@ -12,45 +12,20 @@ var ball = {
                 }
             }
         }
-    }
-};
-//эту функцию мув болл тоже нужно раздедить по логике,но я еще не совсем догнал как именно разделить ее
-function moveBall(event) {
-    var target = event.target;
-    var x = dataAtribute.getX(target);
-    var y = dataAtribute.getY(target);
-    if( check.cellIsEmpty(y, x) ) {
-        for (var row = 0; row < matrix.length; row++){
-            for (var column = 0; column < matrix[row].length; column++){
-                if (check.ballIsPicked(row, column)) {
-                    
-                    info.textContent = "Шар перемещается";
-
-                    matrix[y][x] = new CreateBallObject(matrix[row][column].color);
-                    addBallToFieldFromMatrix(y, x);
-
+    },
+    findAndDeletePicked: function () {
+        for (var row = 0; row < matrix.length; row++) {
+            for (var column = 0; column < matrix[row].length; column++) {
+                if (check.ballIsPicked(row, column)){
+                    var color = matrix[row][column].color;
                     deleteBallFromField(row, column);
-                    matrix[row][column] = getObjForEmptyCell();
-
-                    steps.textContent = counterForSteps(1);
-                    //здесь сделаю условие,что бы после удаления шаров, рандомные не добавлялись
-                    //пока что условие не работает
-                    if(findOneColorBalls(quantityOfDeleteBalls) || findOneColorBalls1(quantityOfDeleteBalls)){
-                        return;
-                    }else {
-                        setTimeout(addRandomBallToField, 1000, nextRandom);
-                        setTimeout((function () {
-                            displayNextBall.delete(nextRandom);
-                            nextRandom = getNextRandomBallArray(quantityOfRandomBalls);
-                            displayNextBall.set(nextRandom);
-                        }),1000);
-
-                    }
+                    matrix[row][column] = {};
+                    return color;
                 }
             }
+            }
         }
-    }
-}
+};
 
 var dataAtribute = {
     getY: function (elem) {
@@ -60,8 +35,6 @@ var dataAtribute = {
         return elem.getAttribute("data-x");
     }
 };
-
-var quantityOfDeleteBalls = 4;
 
 var tableParent = document.getElementById("game-field");
 
@@ -75,4 +48,28 @@ tableParent.addEventListener("click", function (event) {
     }
 });
 
-tableParent.addEventListener("click", moveBall);
+tableParent.addEventListener("click", function (event) {
+    var target = event.target;
+    var x = dataAtribute.getX(target);
+    var y = dataAtribute.getY(target);
+    if( check.cellIsEmpty(y, x) ) {
+        var color = ball.findAndDeletePicked();
+
+        matrix[y][x] = new CreateBallObject(color);
+        addBallToFieldFromMatrix(y, x);
+
+        steps.textContent = counterForSteps(1);
+
+        findOneColorBalls(quantityOfDeleteBalls);
+        findOneColorBalls1(quantityOfDeleteBalls);
+
+        setTimeout(function () {
+            if (deleteSameColorBall())return;
+            addRandomBallToField(nextRandom);
+            displayNextBall.delete(nextRandom);
+            nextRandom = getNextRandomBallArray(quantityOfRandomBalls);
+            displayNextBall.set(nextRandom);
+        }, 500);
+    }
+});
+

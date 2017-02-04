@@ -37,26 +37,26 @@ function addRandomBallToField(array) {
             --i;
         }
     }
-     findOneColorBalls();
-     findOneColorBalls1();
+     findOneColorBalls(quantityOfDeleteBalls);
+     findOneColorBalls1(quantityOfDeleteBalls);
+     setTimeout(deleteSameColorBall,500);
 }
 
 function CreateBallObject(color) {
     this.color = color;
     this.status = "unpicked";
-    this.toString = function () {
-        return "";
-    };
-    this.pick_ball = function (elem) {
-        elem.classList.add("animation");
-        this.status = "picked";
-    };
-    this.unpick_ball = function (elem) {
-        console.log(elem.classList);
-        elem.classList.remove("animation");
-        this.status = "unpicked";
-    }
 }
+
+CreateBallObject.prototype.pick_ball = function (elem) {
+    elem.classList.add("animation");
+    this.status = "picked";
+};
+
+CreateBallObject.prototype.unpick_ball = function (elem) {
+    console.log(elem.classList);
+    elem.classList.remove("animation");
+    this.status = "unpicked";
+};
 
 var check = {
     cellIsEmpty: function (y, x) {
@@ -98,6 +98,7 @@ var displayNextBall = {
     }
 };
 
+var quantityOfDeleteBalls = 4;
 
 var firstRandom = getNextRandomBallArray(quantityOfRandomBalls);
 

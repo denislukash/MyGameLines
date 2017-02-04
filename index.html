@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Lines JS</title>
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
@@ -35,9 +35,9 @@
             <a name="rules"></a>
             <h1>Rules</h1>
             <div class="text_rules">
-                <p>On field standart size 9 x 9 every step appear 3 balls random color.
-                    At all, in game 7 different colors of ball,you must buid it at horisontal or
-                    vartical line. Balls are delit after 4 or more balls at line. For each delete balls
+                <p>On field standard size 9 x 9 every step appear 3 balls random color.
+                    At all, in game 7 different colors of ball,you must build it at horizontal or
+                    vertical line. Balls are delete after 4 or more balls at line. For each delete balls
                      you get scores( for 4 balls - 8, 5-15, 6-18, 7-21, 8-32, 9-36, 10-50, 11-55 ).
                     After balls delete - appear random ball postponed to next move.On bottom side
                     of game field you can chose field-size and can switch on hints.
@@ -74,24 +74,19 @@
             </td>
         </tr>
         <tr id="game-field"></tr>
-        <tr id="function">
-            <td>
-                <table>
-                    <tr>
-                        <td class="info"><span id="comment">Выберите шар для начала игры</span></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
     </table>
     <div class="button_container">
         <div class="buttons">
-            <a id="new_game_button" class="button_new" >
-                <img src="image/ButtonNewGame.png">
-            </a>
-            <a id="settings_button" class="button_sett">
-                <img src="image/settings-button.png">
-            </a>
+            <div class="new_game_button_container">
+                <a class="button_new" >
+                    <img src="image/ButtonNewGame.png">
+                </a>
+            </div>
+            <div class="button_set_container">
+                <a class="button_sett">
+                    <img src="image/settings-button.png">
+                </a>
+            </div>
         </div>
     </div>
 </div>
@@ -99,7 +94,6 @@
 </div>
 <div class="footer">
     <div class="git">
-        <h1>Follow on Git</h1>
         <a target="_blank" href="https://github.com/denislukash/MyGame">
             <img src="image/git_button.png" height="50px" width="100px">
         </a>

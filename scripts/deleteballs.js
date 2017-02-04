@@ -69,21 +69,24 @@ function findOneColorBalls1(deleteBallsValue) {
             }
         }
     }
-    setTimeout(deleteSameColorBall, 700);
 }
 
+
 function deleteSameColorBall() {
+    var del = false;
     for(var i = 0; i < matrix.length; i++) {
 
         for (var j = 0; j < matrix[i].length; j++) {
 
             if(matrix[i][j].hasOwnProperty("delete")){
                 deleteBallFromField(i, j);
-                matrix[i][j] = getObjForEmptyCell();
+                matrix[i][j] = {};
+                del = true;
 
             }
         }
     }
+    return del;
 }
 
 function deleteAllKeysInObj(obj) {
