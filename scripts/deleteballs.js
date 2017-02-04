@@ -1,114 +1,61 @@
 "use strict";
 
-//так я и не придумал как эти огромные функции упростить, буду еще думать
-function findOneColorBalls(deleteBallsValue) {
-    var coordinatesOneColorBallsObject = {};
-    var sameColorBalls = [];
+//@vm: функция сравнения двух шариков по цвету из матрицы, вместо шариков могут прилететь пустые обьекты,
+//@vm: поэтому сначала проверяется тип обьекта а только потом берется цвет
+//@vm: для пустых обьектов берется NaN в качестве цвета, чтобы при их сравнении всегда получать фолс
+function ballCompare(ball1, ball2) {
+    const color1 = (ball1 instanceof CreateBallObject) ? ball1.color : NaN;
+    const color2 = (ball2 instanceof CreateBallObject) ? ball2.color : NaN;
 
-   for(var i = 0; i < matrix.length; i++){
-
-       for(var j = 0; j < matrix[i].length; j++){
-
-           if ( !check.cellIsEmpty(i, j) ){
-
-               if (sameColorBalls.length === 0){
-                   coordinatesOneColorBallsObject[j] = {y: i, x: j};
-                   sameColorBalls.unshift(matrix[i][j].color);
-               }else{
-
-                   if (sameColorBalls[0] === matrix[i][j].color) {
-                       coordinatesOneColorBallsObject[j] = {y: i, x: j};
-                       sameColorBalls.unshift(matrix[i][j].color);
-                   }else{
-                       if(sameColorBalls.length >= deleteBallsValue)markBallsForDelete(coordinatesOneColorBallsObject);
-                       deleteAllKeysInObj(coordinatesOneColorBallsObject);
-                       sameColorBalls.splice(0, sameColorBalls.length);
-                       coordinatesOneColorBallsObject[j] = {y: i, x: j};
-                       sameColorBalls.unshift(matrix[i][j].color);
-                   }
-               }
-           }else {
-               if(sameColorBalls.length >= deleteBallsValue)markBallsForDelete(coordinatesOneColorBallsObject);
-               sameColorBalls.splice(0, sameColorBalls.length);
-               deleteAllKeysInObj(coordinatesOneColorBallsObject);
-           }
-       }
-   }
+    return color1 === color2;
 }
 
-function findOneColorBalls1(deleteBallsValue) {
-    var coordinatesOneColorBallsObject = {};
-    var sameColorBalls = [];
 
-    for(var i = 0; i < matrix.length; i++){
+function findSameColorBallsInRow(minBallsCount) {
+    matrix.forEach(function (row, rowIndex) {//todo @vm: общее
+        let similarBallsInRowChain = new SimilarChain(minBallsCount, ballCompare, markBallsForDelete);
 
-        for(var j = 0; j < matrix[i].length; j++){
+        row.forEach(function (cell, cellIndex) {//todo @vm: общее
+            similarBallsInRowChain.push(matrix[rowIndex][cellIndex]);
+        });
+    });
+}
 
-            if ( !check.cellIsEmpty(j, i) ){
 
-                if (sameColorBalls.length === 0){
-                    coordinatesOneColorBallsObject[j] = {y: j, x: i};
-                    sameColorBalls.unshift(matrix[j][i].color);
-                }else{
+function findSameColorBallsInColumn(minBallsCount) {
+    matrix.forEach(function (row, rowIndex) {//todo @vm: общее
+        let similarBallsInRowChain = new SimilarChain(minBallsCount, ballCompare, markBallsForDelete);
 
-                    if (sameColorBalls[0] === matrix[j][i].color) {
-                        coordinatesOneColorBallsObject[j] = {y: j, x: i};
-                        sameColorBalls.unshift(matrix[j][i].color);
-                    }else{
-                        if(sameColorBalls.length >= deleteBallsValue)markBallsForDelete(coordinatesOneColorBallsObject);
-                        deleteAllKeysInObj(coordinatesOneColorBallsObject);
-                        sameColorBalls.splice(0, sameColorBalls.length);
-                        coordinatesOneColorBallsObject[j] = {y: j, x: i};
-                        sameColorBalls.unshift(matrix[j][i].color);
-                    }
-                }
-            }else {
-                if(sameColorBalls.length >= deleteBallsValue)markBallsForDelete(coordinatesOneColorBallsObject);
-                sameColorBalls.splice(0, sameColorBalls.length);
-                deleteAllKeysInObj(coordinatesOneColorBallsObject);
-            }
-        }
-    }
+        row.forEach(function (cell, cellIndex) {//todo @vm: общее
+            similarBallsInRowChain.push(matrix[cellIndex][rowIndex]);
+        });
+    });
 }
 
 
 function deleteSameColorBall() {
     var del = false;
-    for(var i = 0; i < matrix.length; i++) {
-
+    var deletedBallsCount = 0;
+    for (var i = 0; i < matrix.length; i++) {
         for (var j = 0; j < matrix[i].length; j++) {
 
-            if(matrix[i][j].hasOwnProperty("delete")){
+            if (matrix[i][j].hasOwnProperty("delete")) {
                 deleteBallFromField(i, j);
                 matrix[i][j] = {};
                 del = true;
-
+                deletedBallsCount++;
             }
         }
     }
+
+    points.innerText = counterForPoints(calculatePoints(deletedBallsCount));
+
     return del;
 }
 
-function deleteAllKeysInObj(obj) {
 
-    for( var key in obj){
-        delete obj[key];
-    }
-}
-
-function calculateKeyInObj(obj) {
-    var result = 0;
-    for(var key in obj){
-        result++
-    }
-    return result;
-}
-
-function markBallsForDelete(obj) {
-    points.innerText = counterForPoints(calculatePoints(calculateKeyInObj(obj)));
-    for(var key in obj){
-        var i = obj[key].y;
-        var j = obj[key].x;
-        matrix[i][j].delete = "ok";
-    }
+function markBallsForDelete(ballsArray) {
+    ballsArray.forEach((ball) => {
+        ball.delete = "ok"
+    });
 }

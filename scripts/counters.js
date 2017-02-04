@@ -29,6 +29,8 @@ function calculatePoints(quantity) {
     if(quantity === 10)return quantity*5;
     if(quantity === 11)return quantity*5;
 
+    //@vm: если ничего не удалили
+    return 0;
 }
 
 //todo @vm: вот эти все переменные здесь создаются но неясно где будут использоваться

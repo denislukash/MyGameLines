@@ -37,8 +37,8 @@ function addRandomBallToField(array) {
             --i;
         }
     }
-     findOneColorBalls(quantityOfDeleteBalls);
-     findOneColorBalls1(quantityOfDeleteBalls);
+     findSameColorBallsInRow(quantityOfDeleteBalls);
+     findSameColorBallsInColumn(quantityOfDeleteBalls);
      setTimeout(deleteSameColorBall,500);
 }
 
