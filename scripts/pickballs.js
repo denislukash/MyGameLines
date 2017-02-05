@@ -60,8 +60,8 @@ tableParent.addEventListener("click", function (event) {
 
         steps.textContent = counterForSteps(1);
 
-        findOneColorBalls(quantityOfDeleteBalls);
-        findOneColorBalls1(quantityOfDeleteBalls);
+        findSameColorBallsInRow(quantityOfDeleteBalls);
+        findSameColorBallsInColumn(quantityOfDeleteBalls);
 
         setTimeout(function () {
             if (deleteSameColorBall())return;
