@@ -10,43 +10,19 @@
     <link rel="stylesheet" href="css/balls.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/settingsmenu.css">
-    <style>
-        [hidden]{
-            display: none;
-        }
-    </style>
-    <script src="scripts/SimilarChain.js"></script>
 </head>
 <body>
-<header id="header" hidden>
-    <div class="logo_nav_container">
-        <a href="#">Game Lines</a>
-        <div class="top_nav">
-            <ul class="top_nav_menu">
-                <li class="top_nav_menu_element"><a>Home</a></li>
-                <li class="top_nav_menu_element"><a href="#game">Game</a></li>
-                <li class="top_nav_menu_element"><a href="#rules">Rules</a></li>
-                <li class="top_nav_menu_element"><a>About</a></li>
-            </ul>
-            </div>
-            </div>
-    <div class="welcome">
-        <h1 class="welcome_text">WELCOME TO LINES</h1>
-        <h2 class="welcome_text_second">Your Favorite Java Scritp Game :)</h2>
-        <div class="start_button_area"><a class="start_button" href="#game">Lets go!</a></div>
-    </div>
-</header>
 <div class="holder">
-        <div class="rules" hidden>
+        <div class="rules" >
             <a name="rules"></a>
             <h1>Rules</h1>
             <div class="text_rules">
                 <p>On field standard size 9 x 9 every step appear 3 balls random color.
                     At all, in game 7 different colors of ball,you must build it at horizontal or
                     vertical line. Balls are delete after 4 or more balls at line. For each delete balls
-                     you get scores( for 4 balls - 8, 5-15, 6-18, 7-21, 8-32, 9-36, 10-50, 11-55 ).
+                     you get scores( for 4 balls - 8, 5-10, 6-18, 7-21, 8-32, 9-36, 10-50, 11-55 ).
                     After balls delete - appear random ball postponed to next move.On bottom side
-                    of game field you can chose field-size and can switch on hints.
+                    of game field you can choose field-size and can switch on hints.
                     If field size 7x7 for delete enough 3 balls same color build on line.After
                     each step appears 2 random balls. If field size 11x11, balls delete after 5 and more
                     same color build on line and after steps appear 4 random balls.A task - score more
@@ -66,7 +42,7 @@
                         <td class="score">Points: <span id="score">0</span></td>
                         <td class="steps">Step: <span id="step">0</span> </td>
                         <td class="next_balls_area">
-                            <table id="next_ball_area" style="display: none">
+                            <table id="next_ball_area" class="hidden">
                                 <tr>
                                     <td><div class="ball next_ball"></div></td>
                                     <td><div class="ball next_ball"></div></td>
@@ -109,7 +85,7 @@
 <div id="game_parameters" class="background_window" style="display: none;">
         <form class="form" id="settings_form">
             <div class="settings"><span>Настройки</span></div>
-            <span>Выберите размер поля:</span><br>
+            <span class="test">Выберите размер поля:</span><br>
             <div class="radio_area">
                 <input type="radio" name="field_size" id="radio_1" value="field7x7"><label for="radio_1">7x7</label>
             </div>
@@ -120,21 +96,25 @@
                 <input type="radio" id="radio_3" name="field_size" value="field11x11"><label for="radio_3">11x11</label>
             </div>
             <div class="checkbox_area">
-                <input type="checkbox" id="checkbox" value="hint_on">
-                <label for="checkbox">Показывать следующие шары</label>
+                <input name="hint" type="checkbox" id="checkbox1" onclick="displayNextBallArea()">
+                <label for="checkbox1">Показывать следующие шары</label>
             </div>
             <div class="confirm_button_area">
-                <input type="image" src="image/ok_button.png" class="confirm_button">
+                <input type="image" src="image/OK_button.png" class="confirm_button">
+            </div>
+            <div class="cancel_button_area">
+                <a class="cancel_button" href="#"><img src="image/cancle_button.png"></a>
             </div>
         </form>
 </div>
 
 <script src="scripts/SimilarChain.js"></script>
 <script src="scripts/field.js"></script>
+<script src="scripts/counters.js"></script>
 <script src="scripts/gamesettings.js"></script>
 <script src="scripts/deleteballs.js"></script>
-<script src="scripts/counters.js"></script>
-<script src="scripts/balls.js"></script>
+<script src="scripts/ball.js"></script>
+<script src="scripts/randomBalls.js"></script>
 <script src="scripts/pickballs.js"></script>
 </body>
 </html>

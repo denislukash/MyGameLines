@@ -1,5 +1,8 @@
 "use strict";
 
+var field_height = 9;
+var field_width = 9;
+
 function getMatrix(height, width) {
     var arr=[];
 
@@ -17,33 +20,36 @@ function createFieldOnHTML(matrix) {
     var table = document.createElement("table");
     table.setAttribute("id", "game-matrix");
 
-    for (var row = 0; row < matrix.length; row++){
-        var tr = document.createElement("tr");
+    matrix.forEach((row, rowIndex) => {
+        let tr = document.createElement("tr");
         table.appendChild(tr);
 
-        for (var column = 0; column < matrix[row].length; column++){
-            var cell = document.createElement("td");
-            var ball = document.createElement("div");
-            cell.appendChild(ball);
-            tr.appendChild(cell);
+        row.forEach((cell, cellIndex) => {
+            let td = document.createElement("td");
+            let ball = document.createElement("div");
+            td.appendChild(ball);
+            tr.appendChild(td);
             ball.classList.add("ball");
-            ball.dataset.y = row;
-            ball.dataset.x = column;
-        }
-    }
+            dataAtribute.setY(rowIndex)(ball);
+            dataAtribute.setX(cellIndex)(ball);
+        })
+    });
     return table;
 }
 
-Object.prototype.toString = function () {
-    return "";
+let dataAtribute = {
+    getY: (elem) => {return elem.getAttribute("data-y")},
+    setY: (value) => {return (elem) => {elem.dataset.y = value}},
+    setX: (value) => {return (elem) => {elem.dataset.x = value}},
+    getX: (elem) => {return elem.getAttribute("data-x")}
 };
 
-var defineHeight = 9;
-var defineWidth = 9;
+Object.prototype.toString = () => {return ""};
 
-var matrix = getMatrix(defineHeight, defineWidth);
-var parentOfGame_matrix = document.getElementById("game-field");
+let matrix = getMatrix(field_height, field_width);
+
+let parentOfGame_matrix = document.getElementById("game-field");
 parentOfGame_matrix.appendChild( createFieldOnHTML(matrix) );
 document.getElementById("game-area").classList.add("field9x9");
-var table = document.getElementById("game-matrix");
+let table = document.getElementById("game-matrix");
 

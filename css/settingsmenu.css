@@ -76,8 +76,9 @@
 }
 
 .radio_area {
-    width: 50%;
+    width: 40%;
     float: left;
+    padding-left: 20px;
 }
 
 .last_element{
@@ -87,18 +88,37 @@
 
 .checkbox_area {
     font-size: 12px;
-    padding-top: 15px;
-    padding-bottom: 25px;
+    padding: 15px 0 25px 10px;
 }
 
 .confirm_button {
-    width: 70px;
+    width: 30px;
     height: 30px;
+    padding-left: 50%;
 }
 
 .confirm_button_area{
-    width: 30%;
-    margin: 0 auto;
+    width: 50%;
+    float: left;
+}
+
+.test {
+   padding-left: 15px;
+}
+
+.cancel_button_area{
+    width: 50%;
+    height: 37px;
+    overflow: hidden;
+}
+
+.cancel_button_area img {
+    width: 30px;
+    height: 30px;
+}
+
+.cancel_button{
+    padding-left: 20px;
 }
 
 .next_balls_area {
@@ -124,4 +144,8 @@
 .field11x11 {
     width: 420px;
     height: 500px;
+}
+
+.hidden {
+    display: none;
 }
